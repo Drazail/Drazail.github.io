@@ -213,11 +213,97 @@
                 This class only works on Android 5+, for documentation please refer to 
                 <a href="RNAndroidAudioStore.html">RNAndroidAudioStore</a>
                 and
-                <a href="global.html">Globals</a>
+                <a href="global.html">Global</a>
                 You can find the example App
                 <a href="https://github.com/Drazail/react-native-get-music-files/tree/development/example">here</a>
+                
         </p>
 
+        <pre><code>
+            import { RNAndroidAudioStore } from "react-native-get-music-files";
+            import { PermissionsAndroid } from "react-native"
+            ...
+
+            constructor() {
+              super();
+              ...
+              this.requestPermission = async () => {
+                try {
+                  const granted = await PermissionsAndroid.requestMultiple(
+                    [
+                      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+                      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE
+                    ],
+                    {
+                      title: "Permission",
+                      message: "Storage access is requiered",
+                      buttonPositive: "OK"
+                    }
+                  );
+                  if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    alert("You can use the package");
+                  } else {
+                    this.requestPermission();
+                  }
+                } catch (err) {
+                  console.warn(err);
+                }
+              };
+
+              this.getAlbums = (artist) => {
+                RNAndroidAudioStore.getAlbums({artist
+                })
+                  .then(f => {
+                    this.setState({ tracks: f });
+                  })
+                  .catch(er => console.warn(error););
+              };
+          
+              this.getArtists = () => {
+                RNAndroidAudioStore.getArtists({})
+                  .then(f => {
+                    this.setState({ tracks: f });
+                  })
+                  .catch(er => console.warn(error););
+              };
+          
+              this.getSongs = (artist, album) => {
+                RNAndroidAudioStore.getSongs({artist, album})
+                  .then(f => {
+                    this.setState({ tracks: f });
+                  })
+                  .catch(er => console.warn(error););
+              };
+  
+              this.searchLibrary = (searchParam) => {
+                RNAndroidAudioStore.search({searchParam})
+                  .then(f => {
+                    this.setState({ tracks: f });
+                  })
+                  .catch(er => console.warn(error););
+              };
+              ...
+            }
+
+            componentDidMount() {
+              ...
+              // read and write permisions should be granted before any of the class methods are called otherwise the app will crash
+              this.requestPermission();
+              ...
+            }
+
+            ...
+
+            </code></pre>
+            <h3 id="note">Note</h3>
+                For list of all the methods and global objects please refer to 
+                <a href="RNAndroidAudioStore.html">RNAndroidAudioStore</a>
+                and
+                <a href="global.html">Global</a>
+                You can find the example App
+                <a href="https://github.com/Drazail/react-native-get-music-files/tree/development/example">here</a>
+                
+           </p>
         <h1 id="notes">Notes</h1>
 
         <ul>
