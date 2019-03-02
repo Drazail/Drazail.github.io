@@ -104,13 +104,15 @@
           <li>
             Add
             <code
-              >import com.reactlibrary.RNReatNativeGetMusicFilesPackage;</code
+              >import com.reactlibrary.RNReatNativeGetMusicFilesPackage;
+               import com.drazail.rnandroidstore.RNAndroidStorePackage;
+              </code
             >
             to the imports at the top of the file
           </li>
 
           <li>
-            Add <code>new RNReatNativeGetMusicFilesPackage()</code> to the list
+            Add <code>new RNReatNativeGetMusicFilesPackage(), new RNAndroidStorePackage()</code> to the list
             returned by the <code>getPackages()</code> method
           </li>
         </ul>
@@ -137,7 +139,8 @@
 
         <h2 id="usage">Usage</h2>
 
-        <pre><code>import MusicFiles from 'react-native-get-music-files';
+        <pre><code>
+        import MusicFiles from 'react-native-get-music-files';
         
         MusicFiles.getAll({
             blured : true, // works only when 'cover' is set to true
@@ -205,6 +208,16 @@
         ]
         </code></pre>
 
+        <h2 id="RNAndroidAudioStore">RNAndroidAudioStore</h2>
+        <p>
+                This class only works on Android 5+, for documentation please refer to 
+                <a href="RNAndroidAudioStore.html">RNAndroidAudioStore</a>
+                and
+                <a href="globals.html">Globals</a>
+                You can find the example App
+                <a href="https://github.com/Drazail/react-native-get-music-files/tree/development/example">here</a>
+        </p>
+
         <h1 id="notes">Notes</h1>
 
         <ul>
@@ -214,6 +227,9 @@
             <code>https://github.com/yonahforst/react-native-permissions</code>
           </li>
         </ul>
+
+       
+
 
         <h1 id="versionchanges">Version Changes</h1>
 
@@ -259,7 +275,7 @@
       <h2><a href="index.html">Home</a></h2>
       <h3>Classes</h3>
       <ul>
-        <li><a href="MusicFiles.html">RNAndroidAudioStore</a></li>
+        <li><a href="RNAndroidAudioStore.html">RNAndroidAudioStore</a></li>
       </ul>
       <h3><a href="global.html">Global</a></h3>
     </nav>
